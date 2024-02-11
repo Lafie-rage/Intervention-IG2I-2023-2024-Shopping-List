@@ -18,9 +18,14 @@ import androidx.compose.ui.unit.dp
 import fr.lafie.rage.myshoppinglist.data.dto.ShoppingItem
 import fr.lafie.rage.myshoppinglist.ui.theme.MyShoppingListTheme
 import fr.lafie.rage.myshoppinglist.ui.theme.Typography
+import fr.lafie.rage.myshoppinglist.utils.ShoppingItemCountFormatter
 
 @Composable
-fun ShoppingItemCard() {
+fun ShoppingItemCard(
+    shoppingItem: ShoppingItem,
+) {
+    val formattedCount = ShoppingItemCountFormatter.format(shoppingItem.count)
+
     ElevatedCard(
         modifier = Modifier
             .fillMaxWidth()
@@ -36,13 +41,13 @@ fun ShoppingItemCard() {
         ) {
             Text(
                 style = Typography.headlineMedium,
-                text = "Pomme de terre",
+                text = shoppingItem.label,
             )
             Spacer(modifier = Modifier.height(8.dp))
             Row {
                 Text(
                     style = Typography.bodyLarge,
-                    text = "1.00",
+                    text = formattedCount,
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
@@ -59,6 +64,13 @@ fun ShoppingItemCard() {
 @Preview(showBackground = false)
 fun ShoppingItemCardPreview() {
     MyShoppingListTheme {
-        ShoppingItemCard()
+        ShoppingItemCard(
+            ShoppingItem(
+                id = 0,
+                label = "Pomme de terre",
+                count = 1f,
+                unit = "Kg",
+            )
+        )
     }
 }
