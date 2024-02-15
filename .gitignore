@@ -11,9 +11,14 @@
 /.idea/vcs.xml
 /.idea/compiler.xml
 /.idea/assetWizardSettings.xml
+/.idea/.name
 .DS_Store
 /build
 /captures
 .externalNativeBuild
 .cxx
 local.properties
+
+# SonarLint Plugin
+.idea/sonarlint
+.idea/sonarlint.xml
