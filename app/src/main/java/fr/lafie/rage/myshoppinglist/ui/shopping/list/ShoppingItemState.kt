@@ -1,4 +1,4 @@
-package fr.lafie.rage.myshoppinglist.ui.state
+package fr.lafie.rage.myshoppinglist.ui.shopping.list
 
 data class ShoppingItemState(
     val id: Int,

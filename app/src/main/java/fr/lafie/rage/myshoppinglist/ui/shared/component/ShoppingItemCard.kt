@@ -1,4 +1,4 @@
-package fr.lafie.rage.myshoppinglist.ui.components
+package fr.lafie.rage.myshoppinglist.ui.shared.component
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,9 +15,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import fr.lafie.rage.myshoppinglist.ui.state.ShoppingItemState
-import fr.lafie.rage.myshoppinglist.ui.theme.MyShoppingListTheme
-import fr.lafie.rage.myshoppinglist.ui.theme.Typography
+import fr.lafie.rage.myshoppinglist.ui.shared.theme.MyShoppingListTheme
+import fr.lafie.rage.myshoppinglist.ui.shared.theme.Typography
+import fr.lafie.rage.myshoppinglist.ui.shopping.list.ShoppingItemState
 import fr.lafie.rage.myshoppinglist.utils.ShoppingItemCountFormatter
 
 @Composable

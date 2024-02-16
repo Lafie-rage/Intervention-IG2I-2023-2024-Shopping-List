@@ -1,4 +1,4 @@
-package fr.lafie.rage.myshoppinglist.ui.page
+package fr.lafie.rage.myshoppinglist.ui.shopping.list
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,10 +19,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import fr.lafie.rage.myshoppinglist.R
-import fr.lafie.rage.myshoppinglist.ui.components.ShoppingItemCard
-import fr.lafie.rage.myshoppinglist.ui.state.ShoppingItemState
-import fr.lafie.rage.myshoppinglist.ui.state.ShoppingListState
-import fr.lafie.rage.myshoppinglist.ui.theme.MyShoppingListTheme
+import fr.lafie.rage.myshoppinglist.ui.shared.component.ShoppingItemCard
+import fr.lafie.rage.myshoppinglist.ui.shared.theme.MyShoppingListTheme
 
 @Composable
 fun ShoppingListPage(

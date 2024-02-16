@@ -1,10 +1,9 @@
-package fr.lafie.rage.myshoppinglist.ui.viewmodel
+package fr.lafie.rage.myshoppinglist.ui.shopping.list
 
 import androidx.lifecycle.ViewModel
 import fr.lafie.rage.myshoppinglist.data.dto.ShoppingItem
 import fr.lafie.rage.myshoppinglist.data.service.retrieveShoppingList
 import fr.lafie.rage.myshoppinglist.shared.toState
-import fr.lafie.rage.myshoppinglist.ui.state.ShoppingListState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
