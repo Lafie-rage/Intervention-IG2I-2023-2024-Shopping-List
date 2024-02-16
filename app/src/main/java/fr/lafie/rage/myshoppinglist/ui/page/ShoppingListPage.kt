@@ -19,39 +19,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import fr.lafie.rage.myshoppinglist.R
-import fr.lafie.rage.myshoppinglist.data.dto.ShoppingItem
 import fr.lafie.rage.myshoppinglist.ui.components.ShoppingItemCard
+import fr.lafie.rage.myshoppinglist.ui.state.ShoppingItemState
+import fr.lafie.rage.myshoppinglist.ui.state.ShoppingListState
 import fr.lafie.rage.myshoppinglist.ui.theme.MyShoppingListTheme
 
 @Composable
-fun ShoppingListPage() {
+fun ShoppingListPage(
+    state: ShoppingListState,
+) {
     val context = LocalContext.current
-    val shoppingList = listOf(
-        ShoppingItem(
-            id = 0,
-            label = "Pomme de terre",
-            count = 1f,
-            unit = "Kg",
-        ),
-        ShoppingItem(
-            id = 0,
-            label = "Fraise",
-            count = 500f,
-            unit = "g",
-        ),
-        ShoppingItem(
-            id = 0,
-            label = "Lait",
-            count = 1f,
-            unit = "L",
-        ),
-        ShoppingItem(
-            id = 0,
-            label = "Eau",
-            count = 1.5f,
-            unit = "L",
-        ),
-    )
+
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         floatingActionButton = {
@@ -78,7 +56,7 @@ fun ShoppingListPage() {
                 .fillMaxWidth()
                 .padding(padding),
         ) {
-            items(shoppingList) { shoppingItem ->
+            items(state.shoppingList) { shoppingItem ->
                 ShoppingItemCard(shoppingItem = shoppingItem)
             }
         }
@@ -89,6 +67,23 @@ fun ShoppingListPage() {
 @Preview
 fun ShoppingListPagePreview() {
     MyShoppingListTheme {
-        ShoppingListPage()
+        ShoppingListPage(
+            ShoppingListState(
+                listOf(
+                    ShoppingItemState(
+                        id = 0,
+                        label = "Pomme de terre",
+                        count = 1f,
+                        unit = "Kg",
+                    ),
+                    ShoppingItemState(
+                        id = 0,
+                        label = "Lait",
+                        count = 1.5f,
+                        unit = "L",
+                    ),
+                )
+            )
+        )
     }
 }

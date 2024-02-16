@@ -15,14 +15,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import fr.lafie.rage.myshoppinglist.data.dto.ShoppingItem
+import fr.lafie.rage.myshoppinglist.ui.state.ShoppingItemState
 import fr.lafie.rage.myshoppinglist.ui.theme.MyShoppingListTheme
 import fr.lafie.rage.myshoppinglist.ui.theme.Typography
 import fr.lafie.rage.myshoppinglist.utils.ShoppingItemCountFormatter
 
 @Composable
 fun ShoppingItemCard(
-    shoppingItem: ShoppingItem,
+    shoppingItem: ShoppingItemState,
 ) {
     val formattedCount = ShoppingItemCountFormatter.format(shoppingItem.count)
 
@@ -65,7 +65,7 @@ fun ShoppingItemCard(
 fun ShoppingItemCardPreview() {
     MyShoppingListTheme {
         ShoppingItemCard(
-            ShoppingItem(
+            ShoppingItemState(
                 id = 0,
                 label = "Pomme de terre",
                 count = 1f,
