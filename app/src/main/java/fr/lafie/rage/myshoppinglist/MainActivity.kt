@@ -9,7 +9,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import fr.lafie.rage.myshoppinglist.ui.shopping.list.ShoppingListPage
+import fr.lafie.rage.myshoppinglist.ui.shopping.item.creation.ShoppingItemCreationPage
 import fr.lafie.rage.myshoppinglist.ui.shopping.list.ShoppingListState
 import fr.lafie.rage.myshoppinglist.ui.shopping.list.ShoppingListViewModel
 
@@ -27,7 +27,8 @@ class MainActivity : ComponentActivity() {
             ) {
                 composable("shopping-list") {
                     val state: ShoppingListState by shoppingListViewModel.state.collectAsStateWithLifecycle()
-                    ShoppingListPage(state)
+//                    ShoppingListPage(state)
+                    ShoppingItemCreationPage()
                 }
             }
         }

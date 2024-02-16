@@ -15,9 +15,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import fr.lafie.rage.myshoppinglist.ui.shopping.list.ShoppingItemState
 import fr.lafie.rage.myshoppinglist.ui.shared.theme.MyShoppingListTheme
 import fr.lafie.rage.myshoppinglist.ui.shared.theme.Typography
-import fr.lafie.rage.myshoppinglist.ui.shopping.list.ShoppingItemState
 import fr.lafie.rage.myshoppinglist.utils.ShoppingItemCountFormatter
 
 @Composable
