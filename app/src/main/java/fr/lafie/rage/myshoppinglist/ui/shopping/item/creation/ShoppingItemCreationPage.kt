@@ -1,6 +1,5 @@
 package fr.lafie.rage.myshoppinglist.ui.shopping.item.creation
 
-import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -18,7 +17,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
@@ -29,9 +27,9 @@ import fr.lafie.rage.myshoppinglist.ui.shared.component.TextFieldForString
 import fr.lafie.rage.myshoppinglist.ui.shared.theme.Typography
 
 @Composable
-fun ShoppingItemCreationPage() {
-    val context = LocalContext.current
-
+fun ShoppingItemCreationPage(
+    onNavigateToShoppingList: () -> Unit,
+) {
     var state by remember { mutableStateOf(ShoppingItemCreationState()) }
 
     Column(
@@ -102,17 +100,11 @@ fun ShoppingItemCreationPage() {
         }
 
         Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
+            modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center
         ) {
             Button(
-                onClick = {
-                    Toast.makeText(
-                        context,
-                        "A new item has been added to your shopping list !",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }) {
+                onClick = onNavigateToShoppingList,
+            ) {
                 Text(text = stringResource(id = R.string.create_shopping_item_label))
             }
         }

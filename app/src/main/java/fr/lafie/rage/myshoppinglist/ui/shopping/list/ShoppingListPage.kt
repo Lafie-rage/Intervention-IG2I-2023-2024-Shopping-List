@@ -1,6 +1,5 @@
 package fr.lafie.rage.myshoppinglist.ui.shopping.list
 
-import android.widget.Toast
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -14,7 +13,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -25,21 +23,14 @@ import fr.lafie.rage.myshoppinglist.ui.shared.theme.MyShoppingListTheme
 @Composable
 fun ShoppingListPage(
     state: ShoppingListState,
+    onNavigateToShoppingItemCreation: () -> Unit,
 ) {
-    val context = LocalContext.current
-
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         floatingActionButton = {
             FloatingActionButton(
                 modifier = Modifier.padding(8.dp),
-                onClick = {
-                    Toast.makeText(
-                        context,
-                        "Add a new element to your list !",
-                        Toast.LENGTH_SHORT,
-                    ).show()
-                },
+                onClick = onNavigateToShoppingItemCreation,
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,
@@ -66,7 +57,7 @@ fun ShoppingListPage(
 fun ShoppingListPagePreview() {
     MyShoppingListTheme {
         ShoppingListPage(
-            ShoppingListState(
+            state = ShoppingListState(
                 listOf(
                     ShoppingItemState(
                         id = 0,
@@ -81,7 +72,8 @@ fun ShoppingListPagePreview() {
                         unit = "L",
                     ),
                 )
-            )
+            ),
+            onNavigateToShoppingItemCreation = {}
         )
     }
 }

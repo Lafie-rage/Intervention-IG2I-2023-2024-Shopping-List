@@ -4,14 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.runtime.getValue
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import fr.lafie.rage.myshoppinglist.ui.shopping.item.creation.ShoppingItemCreationPage
-import fr.lafie.rage.myshoppinglist.ui.shopping.list.ShoppingListState
+import fr.lafie.rage.myshoppinglist.ui.shopping.item.creation.navigateToShoppingItemCreation
+import fr.lafie.rage.myshoppinglist.ui.shopping.item.creation.shoppingItemCreationNavigation
 import fr.lafie.rage.myshoppinglist.ui.shopping.list.ShoppingListViewModel
+import fr.lafie.rage.myshoppinglist.ui.shopping.list.shoppingListNavigation
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,17 +17,19 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             val shoppingListViewModel by viewModels<ShoppingListViewModel>()
-
+            val navController = rememberNavController()
 
             NavHost(
-                navController = rememberNavController(),
+                navController = navController,
                 startDestination = "shopping-list",
             ) {
-                composable("shopping-list") {
-                    val state: ShoppingListState by shoppingListViewModel.state.collectAsStateWithLifecycle()
-//                    ShoppingListPage(state)
-                    ShoppingItemCreationPage()
-                }
+                shoppingListNavigation(
+                    shoppingListViewModel = shoppingListViewModel,
+                    onNavigateToShoppingItemCreation = navController::navigateToShoppingItemCreation
+                )
+                shoppingItemCreationNavigation(
+                    onNavigateToShoppingList = { navController.navigateUp() }
+                )
             }
         }
     }
