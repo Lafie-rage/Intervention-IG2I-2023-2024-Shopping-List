@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import fr.lafie.rage.myshoppinglist.ui.shopping.item.creation.ShoppingItemCreationViewModel
 import fr.lafie.rage.myshoppinglist.ui.shopping.item.creation.navigateToShoppingItemCreation
 import fr.lafie.rage.myshoppinglist.ui.shopping.item.creation.shoppingItemCreationNavigation
 import fr.lafie.rage.myshoppinglist.ui.shopping.list.ShoppingListViewModel
@@ -17,6 +18,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             val shoppingListViewModel by viewModels<ShoppingListViewModel>()
+            val shoppingItemCreationViewModel by viewModels<ShoppingItemCreationViewModel>()
             val navController = rememberNavController()
 
             NavHost(
@@ -28,6 +30,7 @@ class MainActivity : ComponentActivity() {
                     onNavigateToShoppingItemCreation = navController::navigateToShoppingItemCreation
                 )
                 shoppingItemCreationNavigation(
+                    shoppingItemCreationViewModel = shoppingItemCreationViewModel,
                     onNavigateToShoppingList = { navController.navigateUp() }
                 )
             }

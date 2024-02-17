@@ -1,6 +1,8 @@
 package fr.lafie.rage.myshoppinglist.data.service
 
 import fr.lafie.rage.myshoppinglist.data.dto.ShoppingItem
+import fr.lafie.rage.myshoppinglist.shared.toDto
+import fr.lafie.rage.myshoppinglist.ui.shopping.item.creation.ShoppingItemCreationState
 
 private val mockedShoppingListDataBase = mutableListOf(
     ShoppingItem(
@@ -30,3 +32,9 @@ private val mockedShoppingListDataBase = mutableListOf(
 )
 
 fun retrieveShoppingList(): List<ShoppingItem> = mockedShoppingListDataBase
+
+fun addArticle(shoppingItem: ShoppingItemCreationState) {
+    mockedShoppingListDataBase.add(shoppingItem.toDto(getNextUnusedId()))
+}
+
+private fun getNextUnusedId(): Int = mockedShoppingListDataBase.maxOf { it.id }.inc()
