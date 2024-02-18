@@ -16,7 +16,7 @@ class ShoppingListViewModel : ViewModel() {
             return _state.asStateFlow()
         }
 
-    init {
+    fun fetchShoppingList() {
         _state.update { current ->
             current.copy(shoppingList = retrieveShoppingList().map(ShoppingItem::toState))
         }

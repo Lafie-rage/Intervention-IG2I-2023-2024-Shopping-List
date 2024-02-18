@@ -15,6 +15,7 @@ fun NavGraphBuilder.shoppingListNavigation(
         val state: ShoppingListState by shoppingListViewModel.state.collectAsStateWithLifecycle()
         ShoppingListPage(
             state = state,
+            fetchShoppingList = shoppingListViewModel::fetchShoppingList,
             onNavigateToShoppingItemCreation = onNavigateToShoppingItemCreation,
         )
     }
