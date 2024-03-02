@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import fr.lafie.rage.myshoppinglist.R
 import fr.lafie.rage.myshoppinglist.ui.shared.component.ShoppingItemCard
 import fr.lafie.rage.myshoppinglist.ui.shared.theme.MyShoppingListTheme
+import java.util.UUID
 
 @Composable
 fun ShoppingListPage(
@@ -66,13 +67,13 @@ fun ShoppingListPagePreview() {
             state = ShoppingListState(
                 listOf(
                     ShoppingItemState(
-                        id = 0,
+                        id = UUID.randomUUID(),
                         label = "Pomme de terre",
                         count = 1f,
                         unit = "Kg",
                     ),
                     ShoppingItemState(
-                        id = 0,
+                        id = UUID.randomUUID(),
                         label = "Lait",
                         count = 1.5f,
                         unit = "L",

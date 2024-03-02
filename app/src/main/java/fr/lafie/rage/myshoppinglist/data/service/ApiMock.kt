@@ -3,28 +3,29 @@ package fr.lafie.rage.myshoppinglist.data.service
 import fr.lafie.rage.myshoppinglist.data.dto.ShoppingItem
 import fr.lafie.rage.myshoppinglist.shared.toDto
 import fr.lafie.rage.myshoppinglist.ui.shopping.item.creation.ShoppingItemCreationState
+import java.util.UUID
 
 private val mockedShoppingListDataBase = mutableListOf(
     ShoppingItem(
-        id = 0,
+        id = UUID.randomUUID(),
         label = "Pomme de terre",
         count = 1f,
         unit = "Kg",
     ),
     ShoppingItem(
-        id = 0,
+        id = UUID.randomUUID(),
         label = "Fraise",
         count = 500f,
         unit = "g",
     ),
     ShoppingItem(
-        id = 0,
+        id = UUID.randomUUID(),
         label = "Lait",
         count = 1f,
         unit = "L",
     ),
     ShoppingItem(
-        id = 0,
+        id = UUID.randomUUID(),
         label = "Eau",
         count = 1.5f,
         unit = "L",
@@ -34,7 +35,5 @@ private val mockedShoppingListDataBase = mutableListOf(
 fun retrieveShoppingList(): List<ShoppingItem> = mockedShoppingListDataBase
 
 fun addArticle(shoppingItem: ShoppingItemCreationState) {
-    mockedShoppingListDataBase.add(shoppingItem.toDto(getNextUnusedId()))
+    mockedShoppingListDataBase.add(shoppingItem.toDto(UUID.randomUUID()))
 }
-
-private fun getNextUnusedId(): Int = mockedShoppingListDataBase.maxOf { it.id }.inc()

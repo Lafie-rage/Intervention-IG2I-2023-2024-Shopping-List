@@ -15,10 +15,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import fr.lafie.rage.myshoppinglist.ui.shopping.list.ShoppingItemState
 import fr.lafie.rage.myshoppinglist.ui.shared.theme.MyShoppingListTheme
 import fr.lafie.rage.myshoppinglist.ui.shared.theme.Typography
+import fr.lafie.rage.myshoppinglist.ui.shopping.list.ShoppingItemState
 import fr.lafie.rage.myshoppinglist.utils.ShoppingItemCountFormatter
+import java.util.UUID
 
 @Composable
 fun ShoppingItemCard(
@@ -52,7 +53,7 @@ fun ShoppingItemCard(
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
                     style = Typography.bodyLarge,
-                    text = "Kg",
+                    text = shoppingItem.unit,
                 )
             }
         }
@@ -66,7 +67,7 @@ fun ShoppingItemCardPreview() {
     MyShoppingListTheme {
         ShoppingItemCard(
             ShoppingItemState(
-                id = 0,
+                id = UUID.randomUUID(),
                 label = "Pomme de terre",
                 count = 1f,
                 unit = "Kg",
