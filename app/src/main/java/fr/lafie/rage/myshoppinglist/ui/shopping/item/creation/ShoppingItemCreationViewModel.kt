@@ -29,5 +29,7 @@ class ShoppingItemCreationViewModel : ViewModel() {
 
     fun createItem() {
         addArticle(shoppingItemCreationState.value)
+        // Clear state
+        _shoppingItemCreationState.value = ShoppingItemCreationState()
     }
 }
