@@ -4,7 +4,11 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import fr.lafie.rage.myshoppinglist.data.service.addArticle
+import androidx.lifecycle.viewModelScope
+import fr.lafie.rage.myshoppinglist.data.service.RetrofitHelper
+import fr.lafie.rage.myshoppinglist.shared.toDto
+import kotlinx.coroutines.launch
+import java.util.UUID
 
 class ShoppingItemCreationViewModel : ViewModel() {
 
@@ -28,8 +32,13 @@ class ShoppingItemCreationViewModel : ViewModel() {
     }
 
     fun createItem() {
-        addArticle(shoppingItemCreationState.value)
-        // Clear state
-        _shoppingItemCreationState.value = ShoppingItemCreationState()
+        viewModelScope.launch {
+            RetrofitHelper.shoppingItemService.addShoppingItemOnShoppingList(
+                UUID.fromString("83ac5009-3d41-462a-ae82-c1873868c65b"),
+                shoppingItemCreationState.value.toDto(),
+            )
+            // Clear state
+            _shoppingItemCreationState.value = ShoppingItemCreationState()
+        }
     }
 }
