@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitHelper {
     private val retrofitClient: Retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl("http://162.19.231.177:5632")
+        .baseUrl("http://10.0.2.2:8080")
         .build()
 
     val shoppingListService = retrofitClient.create(ShoppingListService::class.java)
