@@ -3,44 +3,37 @@ package fr.lafie.rage.myshoppinglist
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import fr.lafie.rage.myshoppinglist.ui.theme.MyShoppingListTheme
+import androidx.activity.viewModels
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
+import fr.lafie.rage.myshoppinglist.ui.shopping.item.creation.ShoppingItemCreationViewModel
+import fr.lafie.rage.myshoppinglist.ui.shopping.item.creation.navigateToShoppingItemCreation
+import fr.lafie.rage.myshoppinglist.ui.shopping.item.creation.shoppingItemCreationNavigation
+import fr.lafie.rage.myshoppinglist.ui.shopping.list.ShoppingListViewModel
+import fr.lafie.rage.myshoppinglist.ui.shopping.list.shoppingListNavigation
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
-            MyShoppingListTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+            val shoppingListViewModel by viewModels<ShoppingListViewModel>()
+            val shoppingItemCreationViewModel by viewModels<ShoppingItemCreationViewModel>()
+            val navController = rememberNavController()
+
+            NavHost(
+                navController = navController,
+                startDestination = "shopping-list",
+            ) {
+                shoppingListNavigation(
+                    shoppingListViewModel = shoppingListViewModel,
+                    onNavigateToShoppingItemCreation = navController::navigateToShoppingItemCreation
+                )
+                shoppingItemCreationNavigation(
+                    shoppingItemCreationViewModel = shoppingItemCreationViewModel,
+                    onNavigateToShoppingList = { navController.navigateUp() }
+                )
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MyShoppingListTheme {
-        Greeting("Android")
     }
 }

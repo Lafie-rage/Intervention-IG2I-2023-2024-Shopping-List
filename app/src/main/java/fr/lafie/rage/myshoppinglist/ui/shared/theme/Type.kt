@@ -1,4 +1,4 @@
-package fr.lafie.rage.myshoppinglist.ui.theme
+package fr.lafie.rage.myshoppinglist.ui.shared.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MyShoppingList</string>
+    <string name="shopping_list_add_button_description">Add a new element to your list</string>
+    <string name="shopping_item_creation_header">Create your item</string>
+    <string name="label_text_field_label">Label</string>
+    <string name="count_text_field_label">Count</string>
+    <string name="unit_text_field_label">Unit</string>
+    <string name="text_field_placeholder">Type here the %1$s of your new shopping item !</string>
+    <string name="create_shopping_item_label">Add to your list</string>
 </resources>
